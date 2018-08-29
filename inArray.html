@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装inArray方法</title>
+</head>
+<body>
+
+
+<script>
+
+    //inArray方法用于检测某个值是否在某个数组中
+    var newArray=[1,3,5,7,9];
+
+    function inArray(arr,value) {
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]===value){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    console.log(inArray(newArray,2));
+
+
+</script>
+
+
+
+
+</body>
+</html>
