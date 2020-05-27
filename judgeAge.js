@@ -4,5 +4,5 @@ var judgeAge = function (inputIdentity) {
     var nowTime = new Date();
     var age = (nowTime - ageTime)/1000/60/60/24/365;
 
-    return 16 - age > 0 ? true : false;
-}
+    return 16 - age > 0;
+};

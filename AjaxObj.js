@@ -1,6 +1,7 @@
 var AjaxObj = function () {
-}
-AjaxObj.prototype.init = function (type, url, data, succ, err, contentType) {
+
+};
+AjaxObj.prototype.init = function (type, url, data, success, err, contentType) {
     this.type = type;
     this.url = url;
     this.data = data;
@@ -9,6 +10,7 @@ AjaxObj.prototype.init = function (type, url, data, succ, err, contentType) {
     this.contentType = contentType == "" ? "application/x-www-form-urlencoded;charset=utf-8" : contentType;
     return this;
 };
+
 $(function () {
     AjaxObj.prototype.callAjax = function () {
         $.ajax({
@@ -33,7 +35,7 @@ $(function () {
                 DIALOG_UTIL.hideDialog("", "loading");
             }
         })
-    }
+    };
 
     AjaxObj.prototype.callAjax1 = function () {
         $.ajax({
@@ -59,4 +61,4 @@ $(function () {
             }
         })
     }
-})
+});

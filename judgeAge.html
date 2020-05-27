@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //检测年龄是否小于16岁
+    var judgeAge = function (inputIdentity) {
+        if(inputIdentity){
+            var ageTime = new Date(
+                inputIdentity.substr(6,4)+','
+                +inputIdentity.substr(10,2)+','
+                +inputIdentity.substr(12,2)
+            );
+
+            var nowTime = new Date();
+            var age = (nowTime - ageTime)/1000/60/60/24/365;
+
+            return 16 - age > 0;
+        }
+    };
+
+    console.log(judgeAge("412326198909201256"));
+
+
+</script>
+
+</body>
+</html>
