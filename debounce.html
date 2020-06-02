@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖</title>
+</head>
+<body>
+
+<label for="input"></label><input type="text" id="input">
+
+<label for=""></label><textarea name="" id="" cols="30" rows="10"></textarea>
+
+<script>
+    let inputs = document.getElementById("input");
+    //用户输入内容实时反馈结果
+    inputs.addEventListener("input",function(){ //"input"指事件
+        let val = this.value;
+
+        handleSendPhone(val);
+    });
+
+    //请求接口
+    function handleSendPhone(val) {
+        ajaxRequest({
+            user:val,
+        }).then(res=>{
+            console.log(res);
+        })
+    }
+
+    //模拟数据
+    let items = ["abc","aaa","bbb","ccc","ddd"];
+    //模拟ajax请求
+    function ajaxRequest({user}){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                let res = items.includes(user) ? "正确" : "错误";
+                resolve(res);
+            },500);
+        });
+    }
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

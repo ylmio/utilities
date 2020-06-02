@@ -29,3 +29,9 @@ inArray.js,e\e\ee5c0aa9c3e573ad4543e5e799b90f896401fed5
 judgeAge.html,e\2\e2237928b835ec8d2005a06ac1b4ae103837fb71
 A
 apiDemo/server.js,e\3\e3d62edb1dad18fc118ce4d93200b81af549811e
+^
+..idea/markdown-navigator/profiles_settings.xml,c\5\c553a33182a8928cd5760d212e343bd13f573c9b
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+A
+createObject.html,0\8\08a5a6b8b915caa5e23ad40cccced282ea21603a
