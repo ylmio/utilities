@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装缓动动画</title>
+    <style>
+        #page{
+            width: 100%;
+            height: 3000px;
+        }
+        #scrollTop{
+
+        }
+    </style>
+</head>
+<body>
+    <div id="page"></div>
+
+    <div id="scrollTop">
+        <input type="button" value="回到顶部">
+    </div>
+
+
+    <script type="text/html">
+
+    // requestAnimationFrame()的兼容处理，window.requestAnimationFrame是浏览器提供的js全局方法，针对动画效果
+        if(!window.requestAnimationFrame){
+            requestAnimationFrame = function(fn){
+                setTimeout(fn,17);
+            }
+        }
+
+
+        //滚动到顶部 缓动实现
+        //rate 表示缓动
+        var backToTop = function (rate) {
+            //获取当前页面滚动条纵坐标位置
+            var doc = document.body.scrollTop ? document.body : document.documentElement; //判断 兼容处理
+            var scrollTop = doc.scrollTop;
+
+            var top = function () {
+                scrollTop = scrollTop + (0-scrollTop) / (rate/2); //核心代码
+
+                //临界判断，终止动画
+                if(scrollTop<=1){
+                    doc.scrollTop = 0;
+                    return;
+                }
+
+                doc.scrollTop = scrollTop;
+
+                //动画 gogogo
+                requestAnimationFrame(top);
+            };
+
+            top();
+        };
+
+
+        document.getElementById("scrollTop").onclick = function () {
+            backToTop(4);
+        }
+
+    </script>
+
+
+    <script type="text/html">
+
+        //实际开发时候有时候不是滚动到顶部，而是任意位置，于是对上面方法改造了下：
+
+        //滚动到顶部缓动实现
+        //rate表示缓动速率，默认是2
+
+        window.scrollTopTo = function (top,callBack) {
+            var scrollTop = document.scrollingElement.scrollTop;
+            var rate = 2;
+
+            var funTop = function () {
+                scrollTop = scrollTop + (top - scrollTop) / rate;
+
+                //临界判断，终止动画
+                if(Math.abs(scrollTop - top) <= 1){
+                    document.scrollingElement.scrollTop = top;
+                    callBack && callBack();//意思是，如果回调函数存在，则执行该回调函数;
+                    return;
+                }
+
+                document.scrollingElement.scrollTop = scrollTop;
+
+                //动画gogogo
+                requestAnimationFrame(funTop);
+
+            };
+
+            funTop();
+
+        };
+
+        //top 必需。Number。垂直方向希望滚动的位置
+        //callBack 必需。Function。滚动到指定位置的回调方法。
+        //滚动速率内置了，是 2 ，因为实际开发速率调整并不常用。
+        //总之，经过改造之后，滚到顶部的这个方法变得使用多了
+
+
+        //调用
+        document.getElementById("scrollTop").onclick = function () {
+            scrollTopTo(500,function () {
+                console.log("滚啊滚")
+            });
+        }
+    </script>
+
+    <script>
+    //如果项目很多地方使用该算法，每次都写一遍requestAnimationFrame和边界判断是很啰嗦的，于是，我们可以把算法变个身，例如下面这样
+
+    Math.easeout = function (A,B,rate,callBack) {
+        if(A === B || typeof A !== "number"){
+            // return语句将终止当前函数并返回当前函数的值
+            return;
+        }
+
+        B = B || 0;
+
+        rate = rate || 2;
+
+        var step = function () {
+            A = A + (B - A) / rate;
+
+            if(A < 1){
+                callBack(B,true);
+                return;
+            }
+
+            callBack(A,false);
+            requestAnimationFrame(step)
+        };
+
+        step();
+
+    };
+        //A 是起始位置
+        //B 是目标位置
+        //rate 是缓动速率
+        //callBack 是变化的位置回调，支持两个参数，value 和 isEnding,表示当前的位置值(数值)以及是否动画结束了（布尔值）
+
+
+        //于是，我们的返回顶部效果可以这么使用
+
+        var doc = document.body.scrollTop ? document.body : document.documentElement;
+
+        Math.easeout(doc.scrollTop,0,4,function (value) {
+            doc.scrollTop = value;
+        })
+
+
+        document.getElementById("scrollTop").onclick = function () {
+            Math.easeout(doc.scrollTop,0,4,function (value) {
+                doc.scrollTop = value;
+            })
+        }
+
+        //可以看到效果是一样的棒棒的
+        //更关键点是我们的算法可以全局无限制重复利用了！
+
+    </script>
+
+</body>
+</html>
