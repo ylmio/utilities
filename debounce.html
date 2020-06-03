@@ -11,8 +11,27 @@
 <label for=""></label><textarea name="" id="" cols="30" rows="10"></textarea>
 
 <script>
-    // 参考https://segmentfault.com/a/1190000022805523
+    // 参考 https://segmentfault.com/a/1190000022792903
     // https://segmentfault.com/channel/frontend
+
+    /*
+    * 防抖：字面意思是防止抖动。在程序中就是为了防止在一定时间内重复执行一段代码(函数)
+    *在函数被触发n秒后再执行，如果 n 秒内又有执行函数，则重新计算。
+    *
+    * */
+
+    /*
+    * 需求
+    * 有一个输入框，用户输入姓名，然后向后端请求接口，获取该用户名是否存在
+    *
+    * 一般的做法是当输入框市区焦点时再去请求接口判断。但是这样的体验不好，如果是用户输入的内容实时的反馈结果，这样有利于用户体验
+    *
+    * 当用户输入内容实时反馈结果代码如下：
+    *
+    *
+    * */
+
+
     let inputs = document.getElementById("input");
     //用户输入内容实时反馈结果
     inputs.addEventListener("input",function(){ //"input"指事件
@@ -43,12 +62,64 @@
     }
 
 
+    /*
+    * 第一版
+    *
+    * */
 
+    /*
+    * @fn : 要执行的函数
+    * @delay : 执行函数的间隔时间
+    *
+    * */
 
+    function debounce(fn,delay) {
+        let timer; // 定时器
+
+        return function (...args) { //形成闭包
+
+            timer && clearTimeout(timer); //当函数再次执行时，清除定时器，让定时器重新开始计时
+
+            //利用定时器，让指定函数延迟执行
+            timer = setTimeout(function () {
+                //执行的函数
+                fn();
+
+            },delay);
+
+        }
+
+    }
 
 </script>
 
+<script>
 
+    /*
+    *
+    * */
+    function debounce(fn,delay) {
+        let timer;
+
+        return function (...args) { //形成闭包 外部执行的函数其实是这个return出去的函数
+
+            //args 为函数调用时传的参数
+
+            let context = this; //this 为函数执行时的this绑定
+
+            timer && clearTimeout(timer);
+
+            timer = setTimeout(function () {
+
+                //执行的函数 利用apply更改this绑定和传参
+                fn(context,args);
+
+            },delay);
+
+        }
+
+    }
+</script>
 
 
 
