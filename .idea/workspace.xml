@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5803eb95-5f41-4fe4-895f-f077419ac00c" name="Default" comment="防抖">
-      <change afterPath="$PROJECT_DIR$/封装缓动动画.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33f06cdef4ad8009c277839d218683318c888041" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33f06cdef4ad8009c277839d218683318c888041" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/971a84f6b9d238bf444c7199e15064a6f84e60ba" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/971a84f6b9d238bf444c7199e15064a6f84e60ba" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f11afa47ea01ffeffb3752da3f1ae0b4a351a39" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f11afa47ea01ffeffb3752da3f1ae0b4a351a39" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="5803eb95-5f41-4fe4-895f-f077419ac00c" name="Default" comment="等比例靠近理论">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debounce.html" beforeDir="false" afterPath="$PROJECT_DIR$/debounce.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/封装缓动动画.html" beforeDir="false" afterPath="$PROJECT_DIR$/封装缓动动画.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +25,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/封装缓动动画.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
+            <state relative-caret-position="144">
+              <caret line="17" column="79" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="79" />
               <folding>
-                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
@@ -179,7 +173,7 @@
       <workItem from="1590539459524" duration="13648000" />
       <workItem from="1590625919745" duration="1524000" />
       <workItem from="1591106833738" duration="1993000" />
-      <workItem from="1591146423851" duration="6782000" />
+      <workItem from="1591146423851" duration="9408000" />
     </task>
     <task id="LOCAL-00001" summary="practice">
       <created>1590558047894</created>
@@ -195,11 +189,25 @@
       <option name="project" value="LOCAL" />
       <updated>1591108805384</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="封装动画函数">
+      <created>1591154265364</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591154265366</updated>
+    </task>
+    <task id="LOCAL-00004" summary="等比例靠近理论">
+      <created>1591154447631</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591154447631</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30817000" />
+    <option name="totallyTimeSpent" value="33443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -282,7 +290,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="practice" />
     <MESSAGE value="防抖" />
-    <option name="LAST_COMMIT_MESSAGE" value="防抖" />
+    <MESSAGE value="封装动画函数" />
+    <MESSAGE value="等比例靠近理论" />
+    <option name="LAST_COMMIT_MESSAGE" value="等比例靠近理论" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/noRepeat.js">
@@ -409,10 +419,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/封装缓动动画.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
+        <state relative-caret-position="144">
+          <caret line="17" column="79" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="79" />
           <folding>
-            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>

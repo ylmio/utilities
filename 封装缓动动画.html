@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
+ 参考
+<!--https://www.zhangxinxu.com/wordpress/2017/01/share-a-animation-algorithm-js/-->
+
     <div id="page"></div>
 
     <div id="scrollTop">
@@ -117,20 +120,27 @@
     <script>
     //如果项目很多地方使用该算法，每次都写一遍requestAnimationFrame和边界判断是很啰嗦的，于是，我们可以把算法变个身，例如下面这样
 
-    Math.easeout = function (A,B,rate,callBack) {
+    Math.easeout = function (A,B = 0,rate = 2,callBack) {
         if(A === B || typeof A !== "number"){
             // return语句将终止当前函数并返回当前函数的值
             return;
         }
 
-        B = B || 0;
-
-        rate = rate || 2;
+        // B = B || 0;
+        //
+        // rate = rate || 2;
 
         var step = function () {
             A = A + (B - A) / rate;
 
-            if(A < 1){
+            // 在Math.easeout中，当B>A的时候函数会一直执行，不会停止；
+            // if(A < 1){
+            //     callBack(B,true);
+            //     return;
+            // }
+
+            //改成
+            if(Math.abs(B-A) < 1){
                 callBack(B,true);
                 return;
             }
@@ -158,7 +168,7 @@
 
 
         document.getElementById("scrollTop").onclick = function () {
-            Math.easeout(doc.scrollTop,0,4,function (value) {
+            Math.easeout(doc.scrollTop,0,9,function (value) {
                 doc.scrollTop = value;
             })
         }
