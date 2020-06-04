@@ -8,9 +8,7 @@
 
 <label for="input"></label><input type="text" id="input">
 
-<label for=""></label><textarea name="" id="" cols="30" rows="10"></textarea>
-
-<script>
+<script type="text/html">
     // 参考 https://segmentfault.com/a/1190000022792903
     // https://segmentfault.com/channel/frontend
 
@@ -94,34 +92,50 @@
 </script>
 
 <script>
-
     /*
     *
     * */
     function debounce(fn,delay) {
         let timer;
-
         return function (...args) { //形成闭包 外部执行的函数其实是这个return出去的函数
-
             //args 为函数调用时传的参数
-
             let context = this; //this 为函数执行时的this绑定
-
             timer && clearTimeout(timer);
-
             timer = setTimeout(function () {
-
                 //执行的函数 利用apply更改this绑定和传参
                 fn(context,args);
-
             },delay);
-
         }
-
     }
+
+    let ipt =document.getElementById("input");
+    let handle = debounce(handleSendPhone,500);
+    ipt.addEventListener("input",function () {
+        let val = this.value;
+        handle(val);
+    });
+
+    //请求接口
+    function handleSendPhone(val) {
+        ajaxRequest({
+            user:val
+        }).then(res=>{
+            console.log(res);
+        })
+    }
+
+    //模拟数据
+    let items = ["abc","aaa","bbb","ccc","ddd"];
+    //模拟ajax请求
+    function ajaxRequest({user}){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                let res = items.includes(user) ? "正确" : "错误";
+                resolve(res);
+            },500);
+        });
+    }
+
 </script>
-
-
-
 </body>
 </html>
