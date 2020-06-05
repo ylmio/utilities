@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js添加DOM元素</title>
+</head>
+<body>
+
+
+<input type="button" value="添加元素" id="addBtn" onclick="addElements()">
+
+<div id="content"></div>
+
+
+<script>
+    function addElements() {
+        var addBtn = document.getElementById("addBtn");
+        var content = document.getElementById("content");
+        addBtn.onclick = function () {
+            var select = document.createElement("select");
+            var option = document.createElement("option");
+            option.innerText = "请选择";
+            select.appendChild(option);
+            content.appendChild(select);
+        }
+    }
+</script>
+
+
+
+
+</body>
+</html>
