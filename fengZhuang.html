@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*
+    * 为什么要进行代码封装？
+    * 在平时的生产环境中，我经常这样写出这样的代码：
+    * */
+
+    function fAdd(iA,iB) {
+        return iA + iB;
+    }
+
+    function fMud(iA,iB) {
+        return iA - iB;
+    }
+
+    //其本质上是这样的
+    var fAdd = function (iA,iB) {
+        return iA + iB;
+    }
+
+    var fMud = function (iA,iB) {
+        return iA - iB;
+    }
+
+
+    /*
+    * 这样的话，我们就创建了两个全局变量iA,iB。如果在大型项目环境中，会有很多人对代码进行开发，很容易造成变量污染，从而引出很多问题
+    * 所以我们就要对方法进行封装
+    *
+    * */
+
+    // 封装方式一：封装成对象
+    //利用js中对象的特性将我们的方法封装在对象中
+    var oFuncs = {
+        fAdd : function (iA,iB) {
+            return iA + iB;
+        },
+        fMud : function (iA,iB) {
+            return iA - iB;
+        }
+    }
+
+    // 或者
+    var oFuncs = function () {}
+
+    oFuncs.fAdd = function (iA,iB) {
+        return iA + iB;
+    }
+    oFuncs.fMud = function (iA,iB) {
+        return iA - iB;
+    }
+
+    //这样我们就可以这样调用了
+    oFuncs.fAdd(1,2);
+    oFuncs.fMud(2,1);
+
+
+    //当然，我们还可以这样写
+    var oFuncs = function () {
+        return {
+            fAdd : function (iA,iB) {
+                return iA + iB;
+            },
+            fMud : function (iA,iB) {
+                return iA - iB;
+            }
+        }
+    }
+    //这样的话，每次使用方法的时候，要先实例化一下
+    var oUseTool = new oFuncs();
+    oUseTool.fAdd(1, 2);
+    oUseTool.fMud(2, 1);
+
+
+
+
+    //封装成类
+    var oFuncs = function () {
+        this.fAdd = function (iA,iB) {
+            return iA + iB;
+        };
+        this.fMud = function (iA,iB) {
+            return iA - iB;
+        }
+    }
+
+    var oUseTool = new oFuncs();
+    oUseTool.fAdd(1,2);
+
+    //为防止类中的方法被多次创建，我们也可以把它写在原型链上，如：
+    var oFuncs = function () {};
+    oFuncs.prototype.fAdd = function (iA,iB) {
+        return iA + iB;
+    }
+    oFuncs.prototype.fMud = function (iA,iB) {
+        return iA - iB;
+    }
+
+    var oUseTool = new oFuncs();
+    oUseTool.fAdd(1,2);
+
+    //或者这样写
+    var oFuncs = function () {
+
+    };
+    oFuncs.prototype = {
+        fAdd : function (iA,iB) {
+            return iA + iB;
+        },
+        fMud : function (iA,iB) {
+            return iA - iB;
+        }
+    }
+
+    var oUseTool = new oFuncs();
+    console.log(oUseTool.fAdd(1, 2));
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
