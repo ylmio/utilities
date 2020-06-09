@@ -10,7 +10,7 @@
         <div class="dropdown">
             <button 
             id="btnType" 
-            class="btn dropdown-toggle form-control" 
+            class="btn dropdown-toggle form-control"
             type="button" 
             data-toggle="dropdown" 
             data-ztree="check">
